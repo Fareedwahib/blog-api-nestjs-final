@@ -1,4 +1,3 @@
-// src/users/users.service.ts
 import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -51,10 +50,10 @@ export class UsersService {
     return user;
   }
 
-  async findByUsername(username: string): Promise<User> {
-    const user = await this.userModel.findOne({ username }).exec();
+  async findByUsername(email: string): Promise<User> {
+    const user = await this.userModel.findOne({ email }).exec();
     if (!user) {
-      throw new NotFoundException(`User with username ${username} not found`);
+      throw new NotFoundException(`User with username ${email} not found`);
     }
     return user;
   }
@@ -86,6 +85,7 @@ export class UsersService {
   }
 
   async remove(id: string): Promise<void> {
+
     const result = await this.userModel.findByIdAndDelete(id).exec();
     if (!result) {
       throw new NotFoundException(`User with ID ${id} not found`);
