@@ -9,6 +9,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CommentsModule } from './comments/comments.module';
 import { LikesModule } from './likes/likes.module';
+import { SubscriptionsModule } from './subscription/subscription.module';
+import { NotificationModule } from './notifications/notifications.module';
 
 @Module({
   imports: [   
@@ -27,7 +29,9 @@ import { LikesModule } from './likes/likes.module';
     PostsModule,
     CategoriesModule,
     CommentsModule,
-    LikesModule
+    LikesModule,
+    SubscriptionsModule,
+    NotificationModule
   ],
   controllers: [AppController],
   providers: [AppService],
