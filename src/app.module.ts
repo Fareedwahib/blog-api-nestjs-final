@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
-import { RolesModule } from './roles/roles.module';
 import { AuthModule } from './auth/auth.module';  
 import { PostsModule } from './posts/posts.module';
 import { CategoriesModule } from './category/category.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [   
@@ -22,10 +22,10 @@ import { MongooseModule } from '@nestjs/mongoose';
       inject: [ConfigService],
     }),
     UsersModule, 
-    RolesModule, 
     AuthModule,
     PostsModule,
-    CategoriesModule
+    CategoriesModule,
+    CommentsModule
   ],
   controllers: [AppController],
   providers: [AppService],
